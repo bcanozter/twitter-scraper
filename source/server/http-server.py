@@ -1,14 +1,16 @@
-from http.server import HTTPServer, BaseHTTPRequestHandler
+
+from flask import Flask, json, request, jsonify
+from flask_cors import CORS
+from handlers import *
+
+api = Flask(__name__)
+CORS(api)
+@api.route('/search', methods=['POST'])
+def get_search():
+    data= request.get_data()
+    return search_timeline(data)
 
 
-class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
 
-    def do_GET(self):
-        """Respond to a GET request."""
-        self.send_response(200)
-        self.send_header("Content-type", "text/html")
-        self.end_headers()
-        self.wfile.write(b'<html><head><title>Title goes here.</title></head>')
-
-httpd = HTTPServer(('localhost', 8000), SimpleHTTPRequestHandler)
-httpd.serve_forever()
+if __name__ == '__main__':
+    api.run()

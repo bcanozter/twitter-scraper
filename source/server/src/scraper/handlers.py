@@ -1,11 +1,11 @@
 import tweepy
 from flask import jsonify
-from data_structures import TweetSearch
-import json
 from collections import namedtuple
+import json
 
-auth = tweepy.OAuthHandler((open('source\\server\\consumer_key.txt','r').read()), (open('source\\server\\consumer_secret.txt','r').read()))
-auth.set_access_token((open('source\\server\\access_token.txt','r').read()), (open('source\\server\\access_token_secret.txt','r').read()))
+
+auth = tweepy.OAuthHandler((open('consumer_key.txt','r').read()), (open('consumer_secret.txt','r').read()))
+auth.set_access_token((open('access_token.txt','r').read()), (open('access_token_secret.txt','r').read()))
 
 api = tweepy.API(auth)
 def search_timeline(query):

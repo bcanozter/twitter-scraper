@@ -15,10 +15,6 @@ export default function App(){
     {
       name:'Home',
       value:'/'
-    },
-    {
-      name:'About',
-      value:'/about'
     }
   ]
 
